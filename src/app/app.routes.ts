@@ -14,6 +14,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 export const routes: Routes = [
   {
@@ -51,7 +53,6 @@ export const routes: Routes = [
         canActivate:[AdminRoleGuard],
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin
           ],
           name: 'Users',
@@ -63,7 +64,6 @@ export const routes: Routes = [
         component: DashboardComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user
           ],
@@ -76,7 +76,6 @@ export const routes: Routes = [
         component: ProfileComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user
           ],
@@ -89,7 +88,6 @@ export const routes: Routes = [
         component: GamesComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user,
           ],
@@ -102,7 +100,6 @@ export const routes: Routes = [
         component: OrdersComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user,
           ],
@@ -115,7 +112,6 @@ export const routes: Routes = [
         component: PreferenceListPageComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user,
           ],
@@ -128,11 +124,34 @@ export const routes: Routes = [
         component: SportTeamComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
             IRoleType.superAdmin,
             IRoleType.user,
           ],
           name: 'Sport Team',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        data: { 
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Categories',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: { 
+          authorities: [
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Products',
           showInSidebar: true
         }
       },

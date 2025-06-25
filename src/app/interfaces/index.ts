@@ -38,9 +38,8 @@ export enum IFeedbackStatus {
 }
 
 export enum IRoleType {
-  admin = "ROLE_ADMIN",
-  user = "ROLE_USER",
-  superAdmin = 'ROLE_SUPER_ADMIN'
+  user = "USER",
+  superAdmin = 'ROLE_SUPER_ADMIN_ROLE',
 }
 
 export interface IRole {
@@ -103,4 +102,9 @@ export interface ISportTeam {
 export interface IPlayer {
   id?: number;
   name?: string;
+}
+export interface ICategory {
+  id?: number;
+  name?: string;
+  description?: string;
 }
