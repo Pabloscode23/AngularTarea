@@ -6,4 +6,15 @@
 <div>
     <h2 class="mb-0">See Categories</h2>
 </div>
-<app-categories-list [pCategoryList]="categoryService.categories$()" [areActionsAvailable]="areActionsAvailable" />
+<app-categories-list [pCategoryList]="categoryService.categories$()"
+    (callUpdateModalMethod)="openEditCategoryModal($event)" (callDeleteMethod)="deleteCategory($event)"
+    [areActionsAvailable]="areActionsAvailable" />
+
+<ng-template #editCategoryModal>
+    <app-modal [hideFooter]="true">
+        <div>
+            <app-categories-form [form]="categoryForm" [areActionsAvailable]="areActionsAvailable"
+                (callUpdateMethod)="updateCategory($event)" />
+        </div>
+    </app-modal>
+</ng-template>

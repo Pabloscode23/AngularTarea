@@ -9,11 +9,11 @@ import { AlertService } from './alert.service';
 export class CategoryService extends BaseService<ICategory> {
   protected override source: string = 'categories';
   private categoryListSignal = signal<ICategory[]>([]);
-  
+
   get categories$() {
     return this.categoryListSignal;
   }
-  public search: ISearch = { 
+  public search: ISearch = {
     page: 1,
     size: 5
   }
@@ -21,7 +21,7 @@ export class CategoryService extends BaseService<ICategory> {
   public totalItems: any = [];
   private alertService: AlertService = inject(AlertService);
 
-  getAll () {
+  getAll() {
     this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
       next: (response: any) => {
         if (Array.isArray(response)) {
@@ -64,19 +64,17 @@ export class CategoryService extends BaseService<ICategory> {
       }
     });
   }
-
   delete(item: ICategory) {
     this.del(item.id).subscribe({
-      next: (response: IResponse<ICategory>) => {
-        this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
+      next: (response: IResponse<ICategory> | null) => {
+        const msg = response?.message || 'Category deleted successfully';
+        this.alertService.displayAlert('success', msg, 'center', 'top', ['success-snackbar']);
         this.getAll();
       },
       error: (err: any) => {
-        this.alertService.displayAlert('error', 'An error occurred adding the category', 'center', 'top', ['error-snackbar']);
+        this.alertService.displayAlert('error', 'An error occurred deleting the category', 'center', 'top', ['error-snackbar']);
         console.error('error', err);
       }
     });
   }
-  
-
 }
