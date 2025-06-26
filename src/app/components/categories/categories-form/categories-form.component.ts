@@ -1,6 +1,6 @@
 import { Component, inject, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ICategory } from '../../interfaces';
+import { ICategory } from '../../../interfaces';
 
 @Component({
   selector: 'app-categories-form',

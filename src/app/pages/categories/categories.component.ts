@@ -1,12 +1,12 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CategoriesFormComponent } from '../../components/categories-form/categories-form.component';
+import { CategoriesFormComponent } from '../../components/categories/categories-form/categories-form.component';
 import { ICategory } from '../../interfaces';
 import { CategoryService } from '../../services/category.service';
 import { AuthService } from '../../services/auth.service';
 import { ModalService } from '../../services/modal.service';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesListComponent } from "../../components/categories-list/categories-list.component";
+import { CategoriesListComponent } from "../../components/categories/categories-list/categories-list.component";
 
 @Component({
   selector: 'app-categories',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@angular/core';
-import { ICategory } from '../../interfaces';
-import { CategoryService } from '../../services/category.service';
+import { ICategory } from '../../../interfaces';
+import { CategoryService } from '../../../services/category.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
