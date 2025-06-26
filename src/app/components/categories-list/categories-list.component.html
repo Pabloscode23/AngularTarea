@@ -1,0 +1,31 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (category of pCategoryList; track category) {
+            <tr>
+                <th scope="row">{{category.id}}</th>
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+                <td class="flex-row d-inline-flex w-100 gap-3">
+                    <button type="button" (click)="callUpdateModalMethod.emit(category)"
+                        [disabled]="!areActionsAvailable" class="btn btn-success">
+                        <i class="fa-solid fa-pen-to-square white"></i>
+                    </button>
+                    <button type="button" (click)="callDeleteMethod.emit(category)" [disabled]="!areActionsAvailable"
+                        class="btn btn-danger">
+                        <i class="fa-solid fa-trash white"></i>
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
