@@ -9,6 +9,7 @@ import { AlertService } from './alert.service';
 export class CategoryService extends BaseService<ICategory> {
   protected override source: string = 'categories';
   private categoryListSignal = signal<ICategory[]>([]);
+  
   get categories$() {
     return this.categoryListSignal;
   }
@@ -22,10 +23,15 @@ export class CategoryService extends BaseService<ICategory> {
 
   getAll () {
     this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
-      next: (response: IResponse<ICategory[]>) => {
-        this.search = { ...this.search, ...response.meta };
-        this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
-        this.categoryListSignal.set(response.data);
+      next: (response: any) => {
+        if (Array.isArray(response)) {
+          this.categoryListSignal.set(response);
+          this.totalItems = response.length;
+        } else {
+          this.search = { ...this.search, ...response.meta };
+          this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
+          this.categoryListSignal.set(response.data);
+        }
       },
       error: (err: any) => {
         console.error('error', err);

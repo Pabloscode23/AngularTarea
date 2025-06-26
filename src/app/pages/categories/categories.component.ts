@@ -6,13 +6,15 @@ import { CategoryService } from '../../services/category.service';
 import { AuthService } from '../../services/auth.service';
 import { ModalService } from '../../services/modal.service';
 import { ActivatedRoute } from '@angular/router';
+import { CategoriesListComponent } from "../../components/categories-list/categories-list.component";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [ 
+  imports: [
     CategoriesFormComponent,
-  ],
+    CategoriesListComponent
+],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

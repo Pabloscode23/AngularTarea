@@ -3,3 +3,7 @@
 </div>
 <app-categories-form [form]="categoryForm" [areActionsAvailable]="areActionsAvailable"
     (callSaveMethod)="saveCategory($event)" />
+<div>
+    <h2 class="mb-0">See Categories</h2>
+</div>
+<app-categories-list [pCategoryList]="categoryService.categories$()" [areActionsAvailable]="areActionsAvailable" />
