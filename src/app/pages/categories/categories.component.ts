@@ -52,6 +52,7 @@ export class CategoriesComponent {
 
   saveCategory(item: ICategory) {
     this.categoryService.save(item);
+    this.categoryForm.reset();
   }
 
   updateCategory(item: ICategory) {

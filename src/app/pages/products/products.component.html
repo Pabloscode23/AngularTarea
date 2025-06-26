@@ -1,1 +1,8 @@
-<p>products works!</p>
+<div>
+    <h2 class="mb-0">Add Product</h2>
+</div>
+<app-products-form [form]="productForm" [areActionsAvailable]="areActionsAvailable" [pCategoryList]="categoryList"
+    (callSaveMethod)="saveProduct($event)" />
+<div>
+    <h2 class="mb-0">See Products</h2>
+</div>

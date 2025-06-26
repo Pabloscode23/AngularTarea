@@ -14,8 +14,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
-import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 export const routes: Routes = [
   {
@@ -50,8 +50,8 @@ export const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
-        canActivate:[AdminRoleGuard],
-        data: { 
+        canActivate: [AdminRoleGuard],
+        data: {
           authorities: [
             IRoleType.superAdmin
           ],
@@ -62,7 +62,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user
@@ -74,7 +74,7 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user
@@ -86,7 +86,7 @@ export const routes: Routes = [
       {
         path: 'games',
         component: GamesComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,
@@ -98,7 +98,7 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,
@@ -110,7 +110,7 @@ export const routes: Routes = [
       {
         path: 'preference-list',
         component: PreferenceListPageComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,
@@ -122,7 +122,7 @@ export const routes: Routes = [
       {
         path: 'sport-team',
         component: SportTeamComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,
@@ -134,7 +134,7 @@ export const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,
@@ -146,7 +146,7 @@ export const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
-        data: { 
+        data: {
           authorities: [
             IRoleType.superAdmin,
             IRoleType.user,

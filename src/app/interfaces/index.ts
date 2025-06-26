@@ -46,7 +46,7 @@ export interface IRole {
   createdAt: string;
   description: string;
   id: number;
-  name : string;
+  name: string;
   updatedAt: string;
 }
 
@@ -72,7 +72,7 @@ export interface ISearch {
   pageNumber?: number;
   pageSize?: number;
   totalElements?: number;
-  totalPages?:number;
+  totalPages?: number;
 }
 
 export interface IMovie {
@@ -107,4 +107,14 @@ export interface ICategory {
   id?: number;
   name?: string;
   description?: string;
+}
+export interface IProduct {
+  id?: number;
+  name: string;
+  description: string;
+  price: number;
+  stockQuantity: number;
+  category: {
+    id: number;
+  };
 }
