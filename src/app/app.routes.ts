@@ -38,6 +38,21 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'products',
+    component: ProductsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'app',
     component: AppLayoutComponent,
     canActivate: [AuthGuard],

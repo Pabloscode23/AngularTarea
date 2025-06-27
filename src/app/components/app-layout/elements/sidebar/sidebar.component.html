@@ -40,12 +40,15 @@
                     <i class="fa fa-angle-right ps-2"></i>
                   </div>
                 </li>
-
                 <li class="sidebar-main-title">
                   <div>
                     <a routerLink="categories">Categories</a>
                     <a routerLink="products">Products</a>
                   </div>
+                  <br>
+                  @if(areActionsAvailable) {
+                  <a routerLink="users">Users</a>
+                  }
                 </li>
               </div>
             </div>
