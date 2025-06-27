@@ -10,7 +10,7 @@ export class ProductService extends BaseService<IProduct> {
     protected override source: string = 'products';
     private productListSignal = signal<IProduct[]>([]);
 
-    get categories$() {
+    get products$() {
         return this.productListSignal;
     }
     public search: ISearch = {

@@ -7,11 +7,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { ProductsListComponent } from '../../components/products/products-list/products-list.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ProductsFormComponent],
+  imports: [ProductsFormComponent, ProductsListComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -52,8 +53,12 @@ export class ProductsComponent {
     effect(() => {
       this.categoryList = this.categoryService.categories$();
     });
-
   }
+
+  getCategoryName(categoryId: number | undefined): string {
+    return this.categoryList.find(cat => cat.id === categoryId)?.name || '';
+  }
+
   saveProduct(item: IProduct) {
     this.productService.save(item);
     this.productForm.reset();
