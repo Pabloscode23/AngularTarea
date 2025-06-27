@@ -14,6 +14,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProductsListComponent {
   @Input() pProductList: IProduct[] = [];
   @Input() pCategoryList: ICategory[] = [];
+  public selectedItem: IProduct = {
+    name: '',
+    description: '',
+    price: 0,
+    stockQuantity: 0,
+    category: { id: 0 }
+  };
   @Input() areActionsAvailable: boolean = false;
   @Output() callUpdateModalMethod: EventEmitter<IProduct> = new EventEmitter<IProduct>();
   @Output() callDeleteMethod: EventEmitter<IProduct> = new EventEmitter<IProduct>();
@@ -36,6 +43,16 @@ export class ProductsListComponent {
     if (!categoryId || !this.pCategoryList) return '';
     const category = this.pCategoryList.find((cat: any) => cat.id === categoryId);
     return category ? category.name ?? '' : '';
+  }
+  showDetailModal(item: ICategory, modal: any) {
+    this.selectedItem = {
+      name: item.name ?? '',
+      description: item.description ?? '',
+      price: 0,
+      stockQuantity: 0,
+      category: { id: item.id ?? 0 }
+    };
+    modal.show();
   }
 
   deleteProduct(product: IProduct) {

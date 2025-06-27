@@ -8,11 +8,12 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ProductsListComponent } from '../../components/products/products-list/products-list.component';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ProductsFormComponent, ProductsListComponent],
+  imports: [ProductsFormComponent, ProductsListComponent, ModalComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -36,9 +37,9 @@ export class ProductsComponent {
     id: [''],
     name: ['', Validators.required],
     description: ['', Validators.required],
-    price: [null, [Validators.required, Validators.min(0)]],
-    stockQuantity: [null, [Validators.required, Validators.min(0)]],
-    category: [null, Validators.required],
+    price: [null as number | null, [Validators.required, Validators.min(0)]],
+    stockQuantity: [null as number | null, [Validators.required, Validators.min(0)]],
+    category: [null as number | null, Validators.required],
   });
   ngOnInit(): void {
     this.authService.getUserAuthorities();
@@ -63,4 +64,26 @@ export class ProductsComponent {
     this.productService.save(item);
     this.productForm.reset();
   }
+  updateProduct(item: IProduct) {
+    this.productService.update(item);
+    this.modalService.closeAll();
+    this.productForm.reset();
+  }
+  deleteProduct(item: IProduct) {
+    this.productService.delete(item);
+  }
+
+  openEditProductModal(product: IProduct) {
+    console.log("openEditProductModal", product);
+    this.productForm.patchValue({
+      id: JSON.stringify(product.id),
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      stockQuantity: product.stockQuantity,
+      category: product.category.id
+    });
+    this.modalService.displayModal('lg', this.editProductModal);
+  }
+
 }
